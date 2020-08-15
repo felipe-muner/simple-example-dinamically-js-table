@@ -4,6 +4,7 @@ let fruitArray = [
   { fruit: "banana", price: 3 },
 ];
 
+drawTable();
 function drawTable() {
   let tbodyRef = document.getElementById("fruit-tbody");
   fruitArray.forEach((f) => {
