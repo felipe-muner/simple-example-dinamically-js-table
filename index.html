@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silja - Sortable task</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="form">
+      <form>
+        <input type="text" id="fruit" name="fruit" placeholder="Fruit..." />
+
+        <input
+          type="number"
+          id="price"
+          name="price"
+          placeholder="Price..."
+          step="0.01"
+        />
+
+        <button onclick="handleAddFruit(event)">ADD ITEM</button>
+      </form>
+    </div>
+    <div id="div-table-fruits">
+      <table id="fruits">
+        <thead>
+          <tr>
+            <th>Fruit</th>
+            <th>Price</th>
+            <!-- <th>Remove</th> -->
+          </tr>
+        </thead>
+        <tbody id="fruit-tbody"></tbody>
+      </table>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
