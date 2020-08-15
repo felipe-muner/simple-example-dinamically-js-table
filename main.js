@@ -4,9 +4,14 @@ let fruitArray = [
   { fruit: "banana", price: 3 },
 ];
 
-drawTable();
 function drawTable() {
+  // sortArray();
+
   let tbodyRef = document.getElementById("fruit-tbody");
+  while (tbodyRef.hasChildNodes()) {
+    tbodyRef.removeChild(tbodyRef.firstChild);
+  }
+
   fruitArray.forEach((f) => {
     let newRow = tbodyRef.insertRow();
     let cellFruit = newRow.insertCell(0);
@@ -15,16 +20,22 @@ function drawTable() {
     cellPrice.innerHTML = f.price;
   });
 }
+drawTable();
 
-// Append a text node to the cell
-var newText = document.createTextNode("New row");
+function cleanForm() {
+  document.getElementById("fruit").value = "";
+  document.getElementById("price").value = "";
+}
 
 function validateInput() {
   let fruit = document.getElementById("fruit").value;
   let price = document.getElementById("price").value;
+
   if (!fruit || !price) {
-    alert("The fields FRUIT and PRICE are required");
+    alert("The fields FRUIT and PRICE are required.");
     return false;
+  } else {
+    return true;
   }
 }
 
@@ -37,11 +48,7 @@ function addFruit(e) {
   });
 }
 
-function handleAddFruit(e) {
-  e.preventDefault();
-  validateInput();
-  addFruit();
-
+function sortArray() {
   fruitArray.sort(function (a, b) {
     if (a.price < b.price) return 1;
     if (a.price > b.price) return -1;
@@ -49,6 +56,17 @@ function handleAddFruit(e) {
     if (a.fruit > b.fruit) return -1;
     return 0;
   });
+}
 
-  console.log(fruitArray);
+function handleAddFruit(e) {
+  e.preventDefault();
+
+  let isValid = validateInput();
+
+  if (isValid) {
+    addFruit();
+    cleanForm();
+    sortArray();
+    drawTable();
+  }
 }
